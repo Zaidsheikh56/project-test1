@@ -1,7 +1,7 @@
 pipeline {
   agent none
   environment {
-    SONAR_TOKEN = credentials('Sonarpass')
+    SONAR_URL = 'http://3.145.148.182:9000/'
   }
     
   stages {
@@ -20,8 +20,12 @@ pipeline {
     }
     stage ('Static Code Analysis') {
       steps {
-        sh 'sudo cd /var/lib/jenkins/workspace/project-test/target'
-        sh 'sudo mvn sonar:sonar -Dsonar.login=$SONAR_TOKEN' 
+        withCredentials([string(credentialsId: 'Sonarpass', variable: 'SONAR_TOKEN')]) {
+                        sh """
+                        echo "Running SonarQube analysis with token: $SONAR_TOKEN"   # $SONAR_TOKEN will be masked
+                        mvn sonar:sonar -Dsonar.host.url=${SONAR_URL} -Dsonar.login=$SONAR_TOKEN
+                        """
+        
       }
     }
   }
