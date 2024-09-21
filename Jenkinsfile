@@ -13,8 +13,8 @@ pipeline {
     stage  ('BuildCode') {
       steps {
         sh'''
-        sudo yum update -y && sudo yum install maven -y
-        sudo mvn clean install
+        yum update -y &&  yum install maven -y
+        mvn clean install
         '''
       }
     }
