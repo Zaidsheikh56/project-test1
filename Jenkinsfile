@@ -23,6 +23,7 @@ pipeline {
         withCredentials([string(credentialsId: 'Sonarpass', variable: 'SONAR_TOKEN')]) {
                         sh """
                         echo "Running SonarQube analysis with token: $SONAR_TOKEN"   # $SONAR_TOKEN will be masked
+                        sudo cd /var/lib/jenkins/workspace/Project-test/
                         mvn sonar:sonar -Dsonar.host.url=${SONAR_URL} -Dsonar.login=$SONAR_TOKEN
                         """
         }
