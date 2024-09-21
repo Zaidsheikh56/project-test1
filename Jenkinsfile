@@ -20,9 +20,11 @@ pipeline {
         '''
       }
     }
-    stage (Static Code Analysis) {
+    stage ('Static Code Analysis') {
       steps {
+        sh' sudo cd /var/lib/jenkins/workspace/project-test/target
         sh 'sudo mvn sonar:sonar -Dsonar.login=$SONAR_TOKEN'
+        
       }
     }
   }
