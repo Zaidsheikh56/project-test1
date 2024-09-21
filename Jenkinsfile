@@ -1,7 +1,5 @@
 pipeline {
-  agent {
-    label "slave-node"
-  }
+  agent none
   environment {
     SONAR_TOKEN = credentials('Sonarpass')
   }
