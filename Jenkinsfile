@@ -22,7 +22,7 @@ pipeline {
         sudo systemctl enable --now docker 
         sudo docker login -u zaidsheikh5656 -p zaidzimad12345
         sudo docker build -t zaissheikh5656/image56 .
-        sudo docker push zaissheikh5656/image56
+        sudo docker push zaidsheikh5656/image56
         '''
       }
     }
