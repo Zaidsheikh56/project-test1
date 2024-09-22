@@ -1,5 +1,7 @@
 pipeline {
-  agent any
+  agent {
+    label "slave-node"
+  }
     
   stages {
     stage('Git Checkout') {
@@ -17,11 +19,11 @@ pipeline {
     }
     stage ('Static Code Analysis') {
         environment {
-        SONAR_URL = "http://3.14.146.27:9000"
+        SONAR_URL = "http://3.15.159.166:9000"
       }
       steps {
         withCredentials([string(credentialsId: 'sonarqube', variable: 'SONAR_AUTH_TOKEN')]) {
-          sh 'cd /var/lib/jenkin/workspace/Project-test && mvn sonar:sonar -Dsonar.login=$SONAR_AUTH_TOKEN -Dsonar.host.url=${SONAR_URL}'
+          sh 'cd /var/lib/jenkin/workspace/project-test && mvn sonar:sonar -Dsonar.login=$SONAR_AUTH_TOKEN -Dsonar.host.url=${SONAR_URL}'
         }
         
         }
