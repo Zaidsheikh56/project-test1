@@ -1,8 +1,5 @@
 pipeline {
   agent any
-  environment {
-    SONAR_URL = 'http://3.145.148.182:9000/'
-  }
     
   stages {
     stage('Git Checkout') {
@@ -19,19 +16,20 @@ pipeline {
       }
     }
     stage ('Static Code Analysis') {
+        environment {
+        SONAR_URL = "http://3.14.146.27:9000"
+      }
       steps {
-        withCredentials([string(credentialsId: 'Sonarpass', variable: 'SONAR_TOKEN')]) {
-                        sh """
-                        echo "Running SonarQube analysis with token: $SONAR_TOKEN"   # $SONAR_TOKEN will be masked
-                        sudo cd /var/lib/jenkins/workspace/Project-test/
-                        mvn sonar:sonar -Dsonar.host.url=${SONAR_URL} -Dsonar.login=$SONAR_TOKEN
-                        """
+        withCredentials([string(credentialsId: 'sonarqube', variable: 'SONAR_AUTH_TOKEN')]) {
+          sh 'cd /var/lib/jenkin/workspace/Project-test && mvn sonar:sonar -Dsonar.login=$SONAR_AUTH_TOKEN -Dsonar.host.url=${SONAR_URL}'
+        }
+        
         }
         
       }
     }
   }
-}
+
         
         
         
