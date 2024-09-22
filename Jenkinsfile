@@ -16,7 +16,7 @@ pipeline {
       }
     }
     stage ('build stage') {
-      step {
+      steps {
         sh'''
         sudo yum install dokcer -y
         sudo systemctl enable --now docker 
