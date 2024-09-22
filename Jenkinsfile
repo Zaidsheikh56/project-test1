@@ -18,7 +18,7 @@ pipeline {
     stage ('build stage') {
       steps {
         sh'''
-        sudo yum install dokcer -y
+        sudo yum install docker -y
         sudo systemctl enable --now docker 
         sudo docker login -u zaidsheikh5656 -p zaidzimad12345
         sudo docker build -t zaissheikh5656/image56 .
