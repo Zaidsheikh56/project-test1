@@ -15,19 +15,18 @@ pipeline {
         '''
       }
     }
-    stage ('Static Code Analysis') {
-        environment {
-        SONAR_URL = "http://3.15.159.166:9000"
-      }
-      steps {
-        withCredentials([string(credentialsId: 'sonarqube', variable: 'SONAR_AUTH_TOKEN')]) {
-          sh ' sudo cd /var/lib/jenkins/workspace/project-test/target &&mvn sonar:sonar -Dsonar.login=$SONAR_AUTH_TOKEN -Dsonar.host.url=${SONAR_URL}'
-        }
-        
-        }
-        
+    stage ('build stage') {
+      step {
+        sh'''
+        sudo yum install dokcer -y
+        sudo systemctl enable --now docker 
+        sudo docker login -u zaidsheikh5656 -p zaidzimad12345
+        sudo docker build -t zaissheikh5656/image56 .
+        sudo docker push zaissheikh5656/image56
+        '''
       }
     }
+  }
 }
   
 
