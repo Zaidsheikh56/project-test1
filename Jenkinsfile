@@ -30,6 +30,19 @@ pipeline {
              }
            }
     }
+    stage('Docker build') {
+           steps{
+             withCredentials([usernameColonPassword(credentialsId: 'docker-cred', variable: 'DOCKER_CRED')]) {
+                  sh'''
+                  sudo systemctl enable --now docker 
+                  sudo docker build -t zaidsheikh5656/first-project .
+                  sudo docker login
+                  sudo docker push zaidsheikh5656/first-project
+                  '''
+             }
+           }
+                  
+}
   }
 }
           
