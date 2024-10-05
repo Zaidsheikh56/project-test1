@@ -8,7 +8,7 @@ pipeline {
     }
     stage('Build Stage') {
             steps{ 
-              sh''' 
+              sh'''
               sudo yum install maven -y 
               sudo -i 
               cd java-maven-sonar-argocd-helm-k8s/spring-boot-app/
