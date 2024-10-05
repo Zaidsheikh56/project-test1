@@ -8,7 +8,7 @@ pipeline {
     }
     stage('Build Stage') {
             steps{ 
-              sh' sudo yum install maven -y &&  && mvn clean install'
+              sh' sudo yum install maven -y &&  mvn clean install'
             }
     }
 
