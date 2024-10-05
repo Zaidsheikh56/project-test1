@@ -8,7 +8,7 @@ pipeline {
     }
     stage('Build Stage') {
             steps{ 
-              sh' sudo yum install maven -y && sudo cd java-maven-sonar-argocd-helm-k8s/spring-boot-app/ && mvn clean install'
+              sh' sudo yum install maven -y && sudo cd /var/lib/jenkins/workspace/project-test && mvn clean install'
             }
     }
 
