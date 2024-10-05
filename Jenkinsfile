@@ -1,7 +1,5 @@
 pipeline {
-  agent {
-    label "slave-node"
-  }
+  agent any
   stages {
     stage('git checkout') {
           steps{
