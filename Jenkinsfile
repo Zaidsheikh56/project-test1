@@ -25,7 +25,7 @@ pipeline {
                   sh'''
                   sudo -i
                   cd /var/lib/jenkins/workspace/project-test/java-maven-sonar-argocd-helm-k8s/spring-boot-app/
-                  mvn sonar:sonar -Dsonar.login=$SONARQUBE-CRED -Dsonar.host.url=${SONAR_URL}
+                  mvn sonar:sonar -Dsonar.login=$SONAR-CRED -Dsonar.host.url=${SONAR_URL}
                   '''
              }
            }
