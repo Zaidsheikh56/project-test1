@@ -24,7 +24,7 @@ pipeline {
              withCredentials([string(credentialsId: 'sonarqube', variable: 'SONAR_CRED')]) { 
                   sh'''
                   sudo -i
-                  cd /var/lib/jenkins/workspace/project-test/java-maven-sonar-argocd-helm-k8s/spring-boot-app/
+                  cd java-maven-sonar-argocd-helm-k8s/spring-boot-app/
                   mvn sonar:sonar -Dsonar.login=$SONAR_CRED -Dsonar.host.url=${SONAR_URL}
                   '''
              }
@@ -37,7 +37,7 @@ pipeline {
                   
                   sudo -i
                   systemctl enable --now docker
-                  cd /var/lib/jenkins/workspace/project-test/java-maven-sonar-argocd-helm-k8s/spring-boot-app
+                  cd java-maven-sonar-argocd-helm-k8s/spring-boot-app
                   docker build -t zaidsheikh5656/first-project .
                   docker login
                   docker push zaidsheikh5656/first-project
