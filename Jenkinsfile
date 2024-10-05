@@ -10,7 +10,9 @@ pipeline {
             steps{ 
               sh''' 
               sudo yum install maven -y 
-              sudo cd /var/lib/jenkins/workspace/project-test/java-maven-sonar-argocd-helm-k8s/spring-boot-app/ && sudo mvn clean install
+              sudo -i 
+              cd /var/lib/jenkins/workspace/project-test/java-maven-sonar-argocd-helm-k8s/spring-boot-app/ 
+              mvn clean install
               '''
             }
     }
