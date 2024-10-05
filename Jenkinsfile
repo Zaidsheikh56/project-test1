@@ -34,8 +34,9 @@ pipeline {
            steps{
              withCredentials([usernameColonPassword(credentialsId: 'docker-cred', variable: 'DOCKER_CRED')]) {
                   sh'''
-                  sudo systemctl enable --now docker 
+                  
                   sudo -i
+                  systemctl enable --now docker
                   cd /var/lib/jenkins/workspace/project-test/java-maven-sonar-argocd-helm-k8s/spring-boot-app
                   docker build -t zaidsheikh5656/first-project .
                   docker login
