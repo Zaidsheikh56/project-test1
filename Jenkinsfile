@@ -37,7 +37,6 @@ pipeline {
                   
                   sudo -i
                   systemctl enable --now docker
-                  cd java-maven-sonar-argocd-helm-k8s/spring-boot-app
                   docker build -t zaidsheikh5656/first-project .
                   docker login -u $zaid -p $zaidsheikh5656
                   docker push zaidsheikh5656/first-project
