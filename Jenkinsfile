@@ -43,9 +43,8 @@ pipeline {
                   docker push zaidsheikh5656/first-project
                   '''
              }
-           }
-                  
-}
+           }               
+    }
   }
 }
           
