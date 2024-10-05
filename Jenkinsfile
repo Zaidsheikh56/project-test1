@@ -39,7 +39,7 @@ pipeline {
                   sudo yum install docker -y
                   sudo systemctl start docker
                   
-                  sudo docker build -f java-maven-sonar-argocd-helm-k8s/spring-boot-app -t zaidsheikh5656/first-project .
+                  sudo docker build -f java-maven-sonar-argocd-helm-k8s/spring-boot-app/Dockerfile -t zaidsheikh5656/first-project .
                   sudo docker login -u $zaid -p $zaidsheikh5656
                   sudo docker push zaidsheikh5656/first-project
                   '''
