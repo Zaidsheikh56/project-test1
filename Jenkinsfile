@@ -36,7 +36,7 @@ pipeline {
                   
                   
                   
-                  sh 'sudo cd java-maven-sonar-argocd-helm-k8s/spring-boot-app && docker build -t zaidsheikh5656/image5656 .'
+                  sh 'sudo cd java-maven-sonar-argocd-helm-k8s/spring-boot-app && sudo docker build -t zaidsheikh5656/image5656 .'
                   
              }
            }               
