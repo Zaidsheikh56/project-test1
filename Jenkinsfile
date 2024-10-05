@@ -35,9 +35,11 @@ pipeline {
              withCredentials([usernameColonPassword(credentialsId: 'docker-cred', variable: 'DOCKER_CRED')]) {
                   sh'''
                   sudo systemctl enable --now docker 
-                  sudo docker build -t zaidsheikh5656/first-project .
-                  sudo docker login
-                  sudo docker push zaidsheikh5656/first-project
+                  sudo -i
+                  cd /var/lib/jenkins/workspace/project-test/java-maven-sonar-argocd-helm-k8s/spring-boot-app
+                  docker build -t zaidsheikh5656/first-project .
+                  docker login
+                  docker push zaidsheikh5656/first-project
                   '''
              }
            }
