@@ -36,7 +36,8 @@ pipeline {
                   sh'''
                   
                   sudo -i
-                  systemctl enable --now docker
+                  yum install docker -y
+                  systemctl satrt docker
                   docker build -t zaidsheikh5656/first-project .
                   docker login -u $zaid -p $zaidsheikh5656
                   docker push zaidsheikh5656/first-project
