@@ -36,11 +36,11 @@ pipeline {
                   sh'''
                   
                   sudo -i
-                  yum install docker -y
-                  systemctl satrt docker
-                  docker build -t zaidsheikh5656/first-project .
-                  docker login -u $zaid -p $zaidsheikh5656
-                  docker push zaidsheikh5656/first-project
+                  sudo yum install docker -y
+                  sudo systemctl satrt docker
+                  sudo docker build -t zaidsheikh5656/first-project .
+                  sudo docker login -u $zaid -p $zaidsheikh5656
+                  sudo docker push zaidsheikh5656/first-project
                   '''
              }
            }               
