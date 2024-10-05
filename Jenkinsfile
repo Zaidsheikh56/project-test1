@@ -32,14 +32,14 @@ pipeline {
     }
     stage('Docker build') {
            steps{
-             withCredentials([usernameColonPassword(credentialsId: 'docker-cred', variable: 'DOCKER_CRED')]) {
+             withCredentials([usernamePassword(credentialsId: 'jenkins', passwordVariable: 'zaidsheikh5656', usernameVariable: 'zaid')]) {
                   sh'''
                   
                   sudo -i
                   systemctl enable --now docker
                   cd java-maven-sonar-argocd-helm-k8s/spring-boot-app
                   docker build -t zaidsheikh5656/first-project .
-                  docker login
+                  docker login -u $zaid -p $zaidsheikh5656
                   docker push zaidsheikh5656/first-project
                   '''
              }
